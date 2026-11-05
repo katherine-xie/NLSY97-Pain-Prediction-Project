@@ -1,13 +1,13 @@
 [project]
-name = "Chronic Pain Prediction Project using NLS97 and O*NET Data"
-intended_user = "Students and researchers interested in exploring relationships between occupation, physical activity, sitting time, and chronic pain"
+name = "Chronic Pain Prediction Project using NLS97 Data"
+intended_user = "Students and researchers interested in exploring relationships between occupation, physical activity, and chronic pain"
 
 [dataset]
 adapter = "csv"
 name = "Subset of the National Longitudinal Survey of Youth 1997 (NLSY97)"
 source = "The National Longitudinal Survey of Youth 1997 (NLSY97) public-use dataset, downloaded 2026-11-01 from https://nlsinfo.org/content/access-data-investigator/accessing-data-cohorts"
 license = "The NLSY97 dataset is public-use data. Follow official NLS guidance for access, citation, and redistribution."
-path = "/Users/katherinexie/Developer/CMOR-438-Fall-2026/NLSY97-Pain-Prediction-Project/data/local/nlsy97_subset_named.csv"
+path = "data/local/nlsy97_subset_named.csv"
 observation_unit = "One original NLSY97 participant (including nonrespondents)"
 identifier = "PUBID__1997"
 feature_columns = [
