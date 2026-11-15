@@ -7,11 +7,16 @@
 - **Retrieval method and date:** A custom subset of the NLSY97 data was downloaded through the NLS Investigator tool on 11/14/2026
 - **License or access agreement:** NLSY97 is public-use data and may be accessed through the NLS Investigator tool. Follow the official [NLS documentation](https://nlsinfo.org/) for citation, access, and redistribution guidance.
 - **Immutable version, checksum, or query:**
-The exact NLSY97 data extract used for this card (Local file name: `nlsy97_raw_physical_activity_chronic_pain.csv`) has the following SHA-256 checksum: 
+The exact raw NLSY97 data extract used for this card (Local file name: `nlsy97_raw_physical_activity_chronic_pain.csv`) has the following SHA-256 checksum: 
 
   ```text
   f61d8de73be48569a987a6f52b32728045b4e3dca05713e450eb15632ed79314
   ```
+- **Data preparation:**
+    - The original dataset is stored as `data/local/nlsy97_raw_physical_activity_chronic_pain.csv`.
+    - A Python script (`scripts/rename_raw_nlsy97_columns.py`) uses the column mappings in `src/dsm_project/data/nlsy97_columns.py` to rename the original NLSY97 reference numbers into descriptive variable names.
+    - The resulting dataset is saved as `data/local/nlsy97_renamed_physical_activity_chronic_pain.csv`
+    - Note: Original observations and values remain unchanged.
 
 ## Observation and Sampling
 
