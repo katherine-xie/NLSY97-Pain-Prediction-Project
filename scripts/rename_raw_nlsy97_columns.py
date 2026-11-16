@@ -5,9 +5,10 @@ Prepare the NLSY97 renamed dataset by renaming raw CSV columns.
 """
 
 from pathlib import Path
-import pandas as pd
-from dsm_project.data.nlsy97_columns import COLUMN_NAMES
 
+import pandas as pd
+
+from dsm_project.data.nlsy97_columns import COLUMN_NAMES
 
 # ---------- Define File Paths ---------- 
 

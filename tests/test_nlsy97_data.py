@@ -1,7 +1,8 @@
 # Tests for the loading NLSY97 data (using synthetic fixture data)
 
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 from dsm_project.config import ProjectConfig
 from dsm_project.data import load_project_dataset

@@ -1,5 +1,5 @@
 """
-This file maps original reference numbers to more descriptive names for the NLSY97 dataset.
+Maps original reference numbers to descriptive names (NLSY97 dataset)
 
 """
 
