@@ -17,6 +17,7 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
         self.max_iterations = max_iterations
         self.tolerance = tolerance
 
+    @staticmethod
     def _sigmoid(z):
         """
         Implement the sigmoid function to convert a number into a probability between 0 and 1
