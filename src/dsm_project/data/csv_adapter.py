@@ -44,9 +44,7 @@ class CSVProjectAdapter:
                 continue
             declaration = config.tasks[name]
             target = (
-                None
-                if kind is TaskKind.UNSUPERVISED
-                else declaration.get("target")
+                None if kind is TaskKind.UNSUPERVISED else declaration.get("target")
             )
             tasks[name] = TaskDefinition(
                 name=str(declaration["name"]),

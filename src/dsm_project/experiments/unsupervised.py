@@ -54,9 +54,9 @@ def run_clustering_example(
     seed = int(config.split.get("random_state", 438))
     first_model = KMeans(n_clusters=clusters, n_init=20, random_state=seed)
     first = first_model.fit_predict(scaled)
-    second = KMeans(
-        n_clusters=clusters, n_init=20, random_state=seed + 1
-    ).fit_predict(scaled)
+    second = KMeans(n_clusters=clusters, n_init=20, random_state=seed + 1).fit_predict(
+        scaled
+    )
     external = None
     if "cultivar" in dataset.observations:
         external = float(adjusted_rand_score(dataset.observations["cultivar"], first))
