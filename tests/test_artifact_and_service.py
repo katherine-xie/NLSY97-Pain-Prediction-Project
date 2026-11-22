@@ -30,9 +30,10 @@ def test_artifact_round_trip_preserves_predictions(tmp_path: Path) -> None:
     frame = dataset.observations.loc[:4, result.feature_names]
 
     assert loaded.metadata["feature_names"] == list(result.feature_names)
-    assert loaded.estimator.predict(frame).tolist() == result.estimator.predict(
-        frame
-    ).tolist()
+    assert (
+        loaded.estimator.predict(frame).tolist()
+        == result.estimator.predict(frame).tolist()
+    )
 
 
 def test_api_reports_identity_and_validates_feature_count(tmp_path: Path) -> None:

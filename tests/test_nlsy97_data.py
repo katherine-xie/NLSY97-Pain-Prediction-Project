@@ -10,6 +10,7 @@ from dsm_project.data import load_project_dataset
 # Define path to fixture data
 FIXTURE_PATH = "data/fixtures/nlsy97_synthetic_fixture.csv"
 
+
 # Test structure of the synthetic dataset
 def test_fixture_structure():
 
@@ -59,6 +60,7 @@ def test_nlsy97_adapter():
 
     # Check that the data loaded correctly
     assert dataset.observations.shape == (10, 23)
+
 
 # Test duplicate respondants
 def test_duplicate_respondent_ids():

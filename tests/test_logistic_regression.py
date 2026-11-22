@@ -1,7 +1,9 @@
 import numpy as np
 import pytest
 from sklearn.linear_model import LogisticRegression
+
 from dsm_project.algorithms.student.logistic_regression import BatchLogisticRegression
+
 
 # Check whether model can learn a simple pattern
 def test_model_learning():
@@ -19,6 +21,7 @@ def test_model_learning():
     # Check that training reduced the loss
     assert model.loss_history_[-1] < model.loss_history_[0]
 
+
 # Check that the model predicts probabilities correctly for known inputs
 def test_known_probabilities():
 
@@ -28,10 +31,8 @@ def test_known_probabilities():
 
     model = BatchLogisticRegression().fit(X, y)
 
-    np.testing.assert_allclose(
-        model.predict_proba(X),
-        np.full((4, 2), 0.5)
-    )
+    np.testing.assert_allclose(model.predict_proba(X), np.full((4, 2), 0.5))
+
 
 # Test that the model raises errors for invalid inputs
 def test_invalid_inputs():
@@ -47,30 +48,22 @@ def test_invalid_inputs():
     with pytest.raises(ValueError):
         model.fit([[1], [2]], [0, 3])
 
-# Check whether my predictions are close to sklearn's LogisticRegression on a random dataset
+
+# Check whether predictions are close to sklearn's on random dataset
 def test_against_sklearn():
 
     # Generate reproducible sample data
     rng = np.random.default_rng(438)
     X = rng.normal(size=(150, 3))
-    probabilities = 1 / (
-        1 + np.exp(-(0.3 + X @ [0.7, -1.0, 0.5]))
-    )
+    probabilities = 1 / (1 + np.exp(-(0.3 + X @ [0.7, -1.0, 0.5])))
     y = rng.binomial(1, probabilities)
 
     # Train both models
-    my_model = BatchLogisticRegression(
-        learning_rate=0.1
-    ).fit(X, y)
+    my_model = BatchLogisticRegression(learning_rate=0.1).fit(X, y)
 
-    reference_model = LogisticRegression(
-        C=1e6,
-        max_iter=10000
-    ).fit(X, y)
+    reference_model = LogisticRegression(C=1e6, max_iter=10000).fit(X, y)
 
     # Compare results
     np.testing.assert_allclose(
-        my_model.predict_proba(X),
-        reference_model.predict_proba(X),
-        atol=0.02
+        my_model.predict_proba(X), reference_model.predict_proba(X), atol=0.02
     )

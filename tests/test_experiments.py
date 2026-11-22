@@ -74,8 +74,7 @@ def test_every_declared_classification_family_runs() -> None:
     )
 
     assert set(table["model"]) == {
-        f"reference:{name}"
-        for name in available_models(TaskKind.CLASSIFICATION)
+        f"reference:{name}" for name in available_models(TaskKind.CLASSIFICATION)
     }
     assert table["value"].between(0.0, 1.0).all()
 

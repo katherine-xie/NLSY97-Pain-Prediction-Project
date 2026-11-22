@@ -1,15 +1,16 @@
-""" 
-Logistic regression using gradient descent 
+"""
+Logistic regression using gradient descent
 
 """
 
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin
 
+
 class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
     """
     Binary logistic regression trained using gradient descent
-    
+
     """
 
     def __init__(self, learning_rate=0.02, max_iterations=5000, tolerance=1e-8):
@@ -20,8 +21,8 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
     @staticmethod
     def _sigmoid(z):
         """
-        Implement the sigmoid function to convert a number into a probability between 0 and 1
-        
+        Implement sigmoid function to convert a number into a probability
+
         """
         z = np.clip(z, -500, 500)
         return 1 / (1 + np.exp(-z))
@@ -29,7 +30,7 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
     def fit(self, X, y):
         """
         Train the model to learn weights and bias
-        
+
         """
 
         # Convert inputs into numpy arrays
@@ -68,9 +69,8 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
         # Store the loss during training
         loss_history = []
 
-        # Repeat gradient descent 
-        for iteration in range(self.max_iterations):
-
+        # Repeat gradient descent
+        for _iteration in range(self.max_iterations):
             # Calculate predicted probabilities
             z = X @ weights + bias
             predictions = self._sigmoid(z)
@@ -86,9 +86,7 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
             bias_gradient = np.mean(errors)
 
             # Stop early if gradients are very small
-            gradient_size = np.sqrt(
-                np.sum(weight_gradient**2) + bias_gradient**2
-            )
+            gradient_size = np.sqrt(np.sum(weight_gradient**2) + bias_gradient**2)
 
             if gradient_size <= self.tolerance:
                 break
@@ -110,7 +108,7 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
     def predict_proba(self, X):
         """
         Predict the probability of each class
-        
+
         """
 
         if not hasattr(self, "coef_"):

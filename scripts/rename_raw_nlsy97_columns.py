@@ -1,4 +1,3 @@
-
 """
 Prepare the NLSY97 renamed dataset by renaming raw CSV columns.
 
@@ -10,24 +9,21 @@ import pandas as pd
 
 from dsm_project.data.nlsy97_columns import COLUMN_NAMES
 
-# ---------- Define File Paths ---------- 
+# ---------- Define File Paths ----------
 
 # Find the project repository root
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # Original raw CSV
-RAW_CSV = (
-    PROJECT_ROOT
-    / "data/local/nlsy97_raw_physical_activity_chronic_pain.csv"
-)
+RAW_CSV = PROJECT_ROOT / "data/local/nlsy97_raw_physical_activity_chronic_pain.csv"
 
 # Output CSV with readable column names.
 OUTPUT_CSV = (
-    PROJECT_ROOT
-    / "data/local/nlsy97_renamed_physical_activity_chronic_pain.csv"
+    PROJECT_ROOT / "data/local/nlsy97_renamed_physical_activity_chronic_pain.csv"
 )
 
-# ---------- Prepare Dataset ---------- 
+# ---------- Prepare Dataset ----------
+
 
 def main():
 
@@ -47,6 +43,7 @@ def main():
     df.to_csv(OUTPUT_CSV, index=False)
 
     print(f"Saved {len(df):,} rows to {OUTPUT_CSV.name}")
+
 
 # Guard
 if __name__ == "__main__":
