@@ -107,7 +107,7 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
 
         return self
 
-    def predict_probab(self, X):
+    def predict_proba(self, X):
         """
         Predict the probability of each class
         
@@ -138,6 +138,6 @@ class BatchLogisticRegression(ClassifierMixin, BaseEstimator):
         Predict class 0 or 1 using a threshold of 0.5
         """
 
-        probabilities = self.predict_probab(X)[:, 1]
+        probabilities = self.predict_proba(X)[:, 1]
 
         return (probabilities >= 0.5).astype(int)
