@@ -29,7 +29,7 @@ def test_known_probabilities():
     model = BatchLogisticRegression().fit(X, y)
 
     np.testing.assert_allclose(
-        model.predict_probability(X),
+        model.predict_probab(X),
         np.full((4, 2), 0.5)
     )
 
@@ -70,7 +70,7 @@ def test_against_sklearn():
 
     # Compare results
     np.testing.assert_allclose(
-        my_model.predict_probability(X),
+        my_model.predict_probab(X),
         reference_model.predict_proba(X),
         atol=0.02
     )
